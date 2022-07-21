@@ -1,7 +1,7 @@
 import 'dart:async';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 part 'network_event.dart';
 part 'network_state.dart';
@@ -16,12 +16,14 @@ class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
 
   void _mapGetConnectionToState(
       GetConnection event, Emitter<NetworkState> emit) async {
-    _streamSubscription = InternetConnectionChecker().onStatusChange.listen(
+    _streamSubscription = Connectivity().onConnectivityChanged.listen(
           (status) => add(
             ConnectivityChanged(
-                status: status == InternetConnectionStatus.disconnected
-                    ? NetworkStatus.failure
-                    : NetworkStatus.success),
+              status: status == ConnectivityResult.mobile ||
+                      status == ConnectivityResult.wifi
+                  ? NetworkStatus.success
+                  : NetworkStatus.failure,
+            ),
           ),
         );
   }
