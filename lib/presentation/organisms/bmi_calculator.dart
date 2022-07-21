@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/domain/logic/get_gender.dart';
 import 'package:bmi_calculator/infrastructure/models/gender_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -96,7 +97,8 @@ class BmiCalculator extends StatelessWidget {
                               ),
                               const SizedBox(height: 20.0),
                               Text(
-                                'This shows that you are ${result.data!['health']}. The healthy bmi range is between ${result.data!['healthy_bmi_range']}',
+                                'This shows that you are ${result.data!['health']} ${getGender(selectedGender)}. The healthy bmi range is between ${result.data!['healthy_bmi_range']}',
+                                textAlign: TextAlign.center,
                                 style:
                                     const TextStyle(color: Color(0xFFCCCCCC)),
                               ),
