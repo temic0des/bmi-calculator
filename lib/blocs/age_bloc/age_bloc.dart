@@ -14,7 +14,7 @@ class AgeBloc extends HydratedBloc<AgeEvent, int> {
 
   @override
   int? fromJson(Map<String, dynamic> json) {
-    return json['state'];
+    return json['state'] as int;
   }
 
   @override
