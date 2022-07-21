@@ -65,12 +65,21 @@ class HomeScreen extends StatelessWidget {
             child: BlocConsumer<NetworkBloc, NetworkState>(
               listener: (context, state) {
                 switch (state.status) {
+                  case NetworkStatus.initial:
+                    ScaffoldMessenger.of(context)
+                      ..hideCurrentMaterialBanner()
+                      ..showSnackBar(
+                        const SnackBar(
+                          content: Text('Checking Internet Connection...'),
+                        ),
+                      );
+                    break;
                   case NetworkStatus.failure:
                     ScaffoldMessenger.of(context)
                       ..hideCurrentMaterialBanner()
                       ..showSnackBar(
                         const SnackBar(
-                          content: Text('No Internet Connection'),
+                          content: Text('No Connection'),
                         ),
                       );
                     break;
@@ -79,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                       ..hideCurrentMaterialBanner()
                       ..showSnackBar(
                         const SnackBar(
-                          content: Text('Internet Connection Available'),
+                          content: Text('Connection Available'),
                         ),
                       );
                 }
@@ -87,7 +96,7 @@ class HomeScreen extends StatelessWidget {
               builder: (context, state) {
                 switch (state.status) {
                   case NetworkStatus.initial:
-                    return const Text('Checking Network...');
+                    break;
                   case NetworkStatus.failure:
                     return const Center(
                       child: Text(''),
