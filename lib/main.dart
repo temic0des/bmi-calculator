@@ -28,7 +28,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark().copyWith(
+        sliderTheme: const SliderThemeData(
+          valueIndicatorColor: Color(0xFF222222),
+        ),
+      ),
       home: MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => GenderBloc()),
