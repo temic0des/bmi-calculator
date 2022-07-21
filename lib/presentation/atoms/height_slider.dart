@@ -22,7 +22,13 @@ class HeightSlider extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('Height (in cm)'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const Text('Height (in cm)'),
+              Text('${value.toInt()}cm'),
+            ],
+          ),
           Slider.adaptive(
             onChanged: onchanged,
             value: value,
