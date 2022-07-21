@@ -24,10 +24,27 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
+        backgroundColor: Colors.blueAccent,
         shadowColor: Colors.transparent,
-        title: const Text(
-          'BMI Calculator',
-          style: TextStyle(color: Color(0xFFCCCCCC)),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/images/logo.png',
+              width: 40.0,
+              height: 40.0,
+            ),
+            const SizedBox(
+              width: 10.0,
+            ),
+            const Text(
+              'BMI Calculator',
+              style: TextStyle(
+                color: Color(0xFFF1F1F1),
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+          ],
         ),
         centerTitle: true,
       ),
