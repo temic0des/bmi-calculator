@@ -6,8 +6,9 @@ part 'age_event.dart';
 
 class AgeBloc extends HydratedBloc<AgeEvent, int> {
   AgeBloc() : super(0) {
-    on<AgeValueChanged>(_mapAgeValueChangedToState,
-        transformer: debounceEvent(debounceDuration));
+    on<AgeValueChanged>(
+      _mapAgeValueChangedToState,
+    );
   }
 
   void _mapAgeValueChangedToState(AgeValueChanged event, Emitter<int> emit) {
