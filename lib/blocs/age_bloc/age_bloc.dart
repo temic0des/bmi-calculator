@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/domain/logic/debounce_event.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
@@ -5,7 +6,8 @@ part 'age_event.dart';
 
 class AgeBloc extends HydratedBloc<AgeEvent, int> {
   AgeBloc() : super(0) {
-    on<AgeValueChanged>(_mapAgeValueChangedToState);
+    on<AgeValueChanged>(_mapAgeValueChangedToState,
+        transformer: debounceEvent(debounceDuration));
   }
 
   void _mapAgeValueChangedToState(AgeValueChanged event, Emitter<int> emit) {

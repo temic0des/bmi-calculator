@@ -44,6 +44,9 @@ dependencies:
   hydrated_bloc: ^8.0.0
   path_provider: ^2.0.11
   connectivity_plus: ^2.3.2
+  stream_transform: ^2.0.0
+  rxdart: ^0.27.5
+  bloc_concurrency: ^0.2.0
 
 dev_dependencies:
   flutter_test:

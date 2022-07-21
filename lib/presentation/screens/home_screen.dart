@@ -25,6 +25,11 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.0,
         shadowColor: Colors.transparent,
+        title: const Text(
+          'BMI Calculator',
+          style: TextStyle(color: Color(0xFFCCCCCC)),
+        ),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(32.0),
